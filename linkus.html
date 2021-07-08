@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人主页</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <nav>
+        <div class="container cl">
+            <div class="logo fl">任家慧</div>
+            <div class="list fr">
+                <ul class="cl">
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="about.html">关于我</a></li>
+                    <li class="active"><a href="#">在线留言</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="banner">
+        <div class="scroll">
+            <!-- 图片展示 -->
+            <img src="images/banner1.jpg" alt="scrollImage" class="img current" />
+            <img src="images/banner2.jpg" alt="scrollImage" class="img" />
+            <img src="images/banner3.jpg" alt="scrollImage" class="img" />
+
+            <!-- 左右箭头的展示 -->
+            <div class="lf"></div>
+            <div class="lr"></div>
+
+            <!-- 小圆点展示 -->
+            <div class="dots">
+                <span class="square"></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="banner-view">
+        <div class="info">
+            <img src="images/2.png" alt="">
+            <p>姓名：任家慧</p>
+            <p>性别：女</p>
+            <p>年龄：19</p>
+            <p>专业：信息管理与信息系统（金融方向）</p>
+            <p>家乡：甘肃兰州</p>
+            </p>
+            <p>爱好：吃火锅、运动</p>
+            <p>QQ：7570127482713310072</p>
+            <p>微信：13099103878</p>
+        </div>
+    </div> -->
+
+    <div class="linkus clear">
+        <h1 class="title">在线留言</h1>
+        <div class="container">
+            <div class="left"><img src="images/linkus.jpeg" alt=""></div>
+            <div class="liuyan">
+                <form action="" method="post" class="form" onsubmit="return check(this)">
+                    <div class="item">
+                        <label>姓名：</label>
+                        <input type="text" placeholder="姓名" id="name">
+                    </div>
+                    <div class="item">
+                        <label>性别：</label>
+                        <input type="radio">男
+                        &nbsp;
+                        <input type="radio">女
+                    </div>
+                    <div class="item">
+                        <label>电话：</label>
+                        <input type="text" placeholder="电话" id="phone">
+                    </div>
+                    <div class="item">
+                        <label>留言内容:</label>
+                        <textarea name="" id="txt">留言内容</textarea>
+                    </div>
+                    <div class="item">
+                        <button id="submitBtn">提交</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <footer>
+        <p>版权所有：任家慧</p>
+    </footer>
+
+    
+    <script src="js/all.js"></script>
+    <script>
+        function check() {
+            //姓名
+            var name = document.getElementById("name");
+            if (name.value == '') {
+                alert('姓名不能为空');
+                name.focus();
+                return false;
+            } else {
+                var vname = (/^[a-zA-Z\u4e00-\u9fa5]{2,10}$/);
+                if (!vname.test(name.value)) {
+                    alert('姓名2-10个字，只能是中文或英文');
+                    name.focus();
+                    return false;
+                }
+            }
+
+            //电话
+            var phone = document.getElementById('phone');
+            if (phone.value == '') {
+                alert('电话不能为空');
+                phone.focus();
+                return false;
+            } else {
+                var phone_reg =
+                    /^13[0-9]{1}[0-9]{8}$|15[0-9]{1}[0-9]{8}$|18[0-9]{1}[0-9]{8}|17[0-9]{1}[0-9]{8}$|14[0-9]{1}[0-9]{8}/;
+                var tel_reg = /^([0-9]{3,4}-)?[0-9]{7,8}$/;
+                if (!phone_reg.test(phone.value) && !tel_reg.test(phone.value)) {
+                    alert('手机或电话号码格式不正确。如果是普通手机号码，必须是11位；如果是固定电话，必须形如(xxxx-xxxxxxxx)');
+                    phone.focus();
+                    return false;
+                }
+            }
+            //留言内容
+            var txt = document.getElementById('txt');
+            if (txt.value == '') {
+                alert('留言内容不能为空');
+                txt.focus();
+                return false;
+            } else {
+                if (txt.value.length < 8) {
+                    alert('不能少于8个字');
+                    txt.focus();
+                    return false;
+                }
+            }
+
+        }
+    </script>
+</body>
+
+</html>
